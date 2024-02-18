@@ -1,0 +1,18 @@
+<p>dogs-list-card works!</p>
+<article class="pet-card">
+  <img class="pet-img" src="{{dog.photoUrl}}" alt="{{dog.name}}">
+
+  <p class="pet-headline">
+    Meet <span class="pet-name">{{ dog.name }}</span>
+  </p>
+  <p class="pet-description">
+    <span class="pet-name">{{ dog.ownerName }}</span> wants you to know this
+    about {{ dog.name }}:
+    {{ dog.description }}
+  </p>
+  <p class="pet-learn-more">
+    <a routerLink="/details/{{ index }}">Learn More</a>
+  </p>
+  <article></article>
+
+</article>
