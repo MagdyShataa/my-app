@@ -9,12 +9,18 @@ nav div.menu-items {
   width: 10%;
   justify-content: space-between;
 }
-nav > div {
+
+nav>div {
   display: flex;
 }
+
 .title {
-  font-size: 25pt;
+  font-size: 15pt;
+  color: #3c4858;
+  text-decoration: none;
+  align-self: center;
 }
+
 .logo {
   height: 40px;
 }

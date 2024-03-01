@@ -1,4 +1,4 @@
-import { CommonModule } from "@angular/common";
+import { CommonModule, NgOptimizedImage } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { Observable, map } from "rxjs";
 import { Dog, DogsService } from "../dogs.service";
@@ -7,11 +7,11 @@ import { ActivatedRoute, RouterLink } from "@angular/router";
 @Component({
   selector: "app-dog-view",
   standalone: true,
-  imports: [CommonModule,RouterLink],
+  imports: [CommonModule, RouterLink,NgOptimizedImage ],
   templateUrl: "./dog-view.component.html",
   styleUrl: "./dog-view.component.scss",
 })
-export class DogViewComponent implements OnInit{
+export class DogViewComponent implements OnInit {
   dog$!: Observable<Dog | undefined>;
 
   constructor(

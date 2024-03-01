@@ -1,0 +1,192 @@
+<p class="text-bg-primary fw-bold ">template-driven works!</p>
+<section class="container" [ngClass]="{'form-shadows': heroForm.touched}" [hidden]="submitted">
+  <header>Registration Forms{{name}}</header>
+
+  <form class="form" (ngSubmit)="onSubmit(heroForm)" #heroForm="ngForm" autocomplete>
+    <div class="column">
+      <div class="input-box">
+        <input type="text" placeholder="First Name" required
+          class="form-control fw-bold  ng-untouched ng-pristine ng-valid " name="firstname" #firstname="ngModel"
+          ngModel />
+
+
+        <div *ngIf="!firstname.dirty" class=" alert alert-danger ">
+          Name is required
+        </div>
+        <p>{{firstname.value}}</p>
+      </div>
+
+      <div class="input-box">
+        <input type="text" class="form-control" placeholder="Last Name" required name="lastname" #lastname="ngModel"
+          ngModel />
+      </div>
+    </div>
+
+    <div class="input-box">
+      <input type="text" class="form-control" placeholder="Email" name="email" required ngModel email="true" />
+    </div>
+
+    <div class="column">
+      <div class="input-box">
+        <input type="number" class="form-control" placeholder="Phone Number" name="Phonenumber" ngModel />
+      </div>
+      <div class="input-box">
+        <input type="date" class="form-control" placeholder="Date of Birth" name="dob" ngModel />
+      </div>
+    </div>
+
+    <div class="input-box">
+      <input type="text" class="form-control" placeholder="username" required ngModel name="username"
+        #username="ngModel" />
+      <button type="submit" [disabled]="!username.valid" class="btn-gen-username btn">
+        Create a Username
+      </button>
+    </div>
+
+    <div class="gender-box">
+      <h3>Gender</h3>
+      <div class="gender-option">
+        <div class="gender">
+          <input type="radio" id="check-male" name="gender" ngModel />
+          <label for="check-male">male</label>
+        </div>
+        <div class="gender">
+          <input type="radio" id="check-female" name="gender" ngModel />
+          <label for="check-female">Female</label>
+        </div>
+        <div class="gender">
+          <input type="radio" id="check-other" name="gender" ngModel />
+          <label for="check-other">prefer not to say</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-box address" ngModelGroup="Address">
+      <label>Address</label>
+      <input type="text" placeholder="Street address" name="Street1" ngModel />
+      <input type="text" placeholder="Street address line 2" name="Street1" ngModel />
+      <div class="column">
+        <div class="select-box">
+          <select name="country">
+            <option hidden>Country</option>
+            <option>America</option>
+            <option>Japan</option>
+            <option>India</option>
+            <option>Nepal</option>
+          </select>
+        </div>
+        <input type="text" placeholder="City" name="City" ngModel />
+      </div>
+      <div class="column">
+        <input type="text" placeholder="Region" />
+        <input type="number" placeholder="Postal code" />
+      </div>
+    </div>
+    <input type="submit" class="form-control" value="Submit" class="submit-btn" [disabled]="!heroForm.valid">
+    <p>First name value: {{ firstname.value }}</p>
+    <p>First name valid: {{ firstname.valid }}</p>
+    <p>First name value: {{ heroForm.value['lastname'] }}</p>
+    <p>First name value: {{ heroForm.value['username'] }}</p>
+
+  </form>
+</section>
+<!-- <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+  <label for="first-name">First Name: </label>
+  <input id="first-name" type="text" formControlName="firstName">
+
+  <label for="last-name">Last Name: </label>
+  <input id="last-name" type="text" formControlName="lastName">
+  <p>Complete the form to enable button.</p>
+  <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+  <br>
+  <br>
+</form> -->
+
+
+<!-- <div class="container">
+  <div [hidden]="submitted">
+    <h1>Hero Form</h1>
+
+    <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+
+
+
+
+      <input type="text" class="form-control  ng-untouched ng-pristine ng-valid  " id="name" required [(ngModel)]="name"
+        name="name">
+      TODO: remove this: {{name | json}}
+      <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+        Name is required
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>
+    </form>
+  </div>
+</div> -->
+<br>
+<div class="container">
+  <div>
+    <h1>Hero Form</h1>
+    <!-- <form (ngSubmit)="onSubmit(heroForm)" #heroForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" required name="name" ngModel>
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          Name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="last-name">Last Name: </label>
+        <input type="text" class="form-control" id="last-name" required name="Last-name" ngModel>
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          Name is required
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>
+
+    </form> -->
+  </div>
+
+
+</div>
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+  <input name="first" ngModel required #first="ngModel" class=" form-control" />
+  <br>
+  <input name="last" ngModel required class=" form-control" />
+  <button type="submit">Submit</button>
+</form>
+
+<p>First name value: {{ first.value }}</p>
+
+<p>Form value: {{ f.value | json }}</p>
+<p>Form valid: {{ f.valid }}</p>
+Example
+<div class="container">
+  <form action="action_page.php" #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="first" ngModel required #first="ngModel" class=" form-control"
+      placeholder="Your name..">
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" class=" form-control" placeholder="Your last name..">
+
+    <label for="country">Country</label>
+    <select id="country" name="country">
+      <option value="australia">Australia</option>
+      <option value="canada">Canada</option>
+      <option value="usa">USA</option>
+    </select>
+
+    <label for="subject">Subject</label>
+    <textarea id="subject" name="subject" class=" form-control" placeholder="Write something.."></textarea>
+
+    <input type="submit" class=" form-control" value="Submit">
+
+  </form>
+</div>
+<br>
+<app-reactive-forms></app-reactive-forms>
+<br>

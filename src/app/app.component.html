@@ -9,7 +9,11 @@
 <nav>
   <div>
     <a [routerLink]="['/']"><img class="logo" src="./assets/dog-walker-logo.svg"></a>
-    <h1 class="title">Walk My Dog</h1>
+    <h1 class="title">Walk My Dog-/</h1>
+    <a routerLink="./heroes" class="title" routerLinkActive="active" ariaCurrentWhenActive="page">-Heroes</a>
+     <a routerLink="./Admin" class="title" routerLinkActive="active" ariaCurrentWhenActive="page">admin </a>
+     <a routerLink="./template-driven" class="title" routerLinkActive="active" ariaCurrentWhenActive="page">admin </a>
+
   </div>
 </nav>
 
@@ -20,6 +24,5 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
 
 <router-outlet />

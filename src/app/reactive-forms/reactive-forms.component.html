@@ -1,0 +1,73 @@
+<p>reactive-forms works!</p>
+<mat-slide-toggle>Toggle me!</mat-slide-toggle>
+
+<nav>
+  <button type="button" (click)="toggle()">Toggle Open/Close</button>
+</nav>
+
+<div [@openClose]="isOpen ? 'open' : 'closed'" class="open-close-container">
+  <p>The box is now {{ isOpen ? 'Open' : 'Closed' }}!</p>
+</div>
+
+<mat-card class="example-card">
+  <section class="container">
+    <header>Registration Form</header>
+
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+      <label for="first-name">First Name: </label>
+      <input id="first-name" type="text" name="firstName" class="form-control" formControlName="firstName" #firstName>
+      firstName:{{ firstName.value | json }}
+      <div *ngIf="!profileForm.valid" class="alert alert-danger">
+        Name must be at least 4 characters long.
+
+      </div>
+      <label for="last-name">Last Name: </label>
+      <input id="last-name" type="text" name="lastName" class="form-control" formControlName="lastName">
+      <div formGroupName="address">
+        <h2>Address</h2>
+
+        <label for="street">Street: </label>
+        <input id="street" type="text" class="form-control" formControlName="street">
+
+        <label for="city">City: </label>
+        <input id="city" type="text" class="form-control" formControlName="city">
+
+        <label for="state">State: </label>
+        <input id="state" type="text" class="form-control" formControlName="state">
+
+        <label for="zip">Zip Code: </label>
+        <input id="zip" type="text" class="form-control" formControlName="zip">
+      </div>
+      <div formArrayName="aliases">
+        <h2>Aliases</h2>
+        <button type="button" (click)="addAlias()">+ Add another alias</button>
+
+        <div *ngFor="let alias of aliases.controls; let i=index">
+          <!-- The repeated alias template -->
+          <label for="alias-{{ i }}">Alias:</label>
+          <input id="alias-{{ i }}" type="text" [formControlName]="i">
+        </div>
+      </div>
+      <p>Form Status: {{ profileForm.status }}</p>
+    </form>
+    <p>Complete the form to enable button.</p>
+    <button type="submit" class="btn "   (click)="onSubmit()" [disabled]="!profileForm.valid">Submit</button>
+
+
+  </section>
+</mat-card>
+
+<br>
+<!-- <router-outlet></router-outlet> -->
+<label for="name">Name: </label>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+<br>
+<br>
